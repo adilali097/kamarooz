@@ -202,6 +202,21 @@
             margin: 0;
         }
 
+        .contact-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .contact-info a {
+            color: #e67e22;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .product-container {
@@ -245,10 +260,10 @@
                 <img src="masala1.jpg" alt="Spicy Garam Masala">
                 <h2 class="product-name">Spicy Garam Masala</h2>
                 <p class="product-description">A perfect blend of rich Indian spices for curries, biryanis, and more.</p>
-                <p class="product-price">1099</p>
-                <button class="buy-now-btn" data-price="1099">
+                <p class="product-price">₹1099</p>
+                <a href="#" class="buy-now-btn" data-price="1099" data-upi="adnanmuhammad4393@okicici">
                     <i class="fas fa-cart-plus"></i> Buy Now
-                </button>
+                </a>
             </div>
 
             <!-- Product 2 -->
@@ -256,10 +271,10 @@
                 <img src="masala2.jpg" alt="Authentic Chana Masala">
                 <h2 class="product-name">Authentic Chana Masala</h2>
                 <p class="product-description">The traditional mix for making delicious Chana Masala with a deep flavor.</p>
-                <p class="product-price">899</p>
-                <button class="buy-now-btn" data-price="899">
+                <p class="product-price">₹899</p>
+                <a href="#" class="buy-now-btn" data-price="899" data-upi="adnanmuhammad4393@okicici">
                     <i class="fas fa-cart-plus"></i> Buy Now
-                </button>
+                </a>
             </div>
 
             <!-- Product 3 -->
@@ -267,12 +282,20 @@
                 <img src="masala3.jpg" alt="Special Tandoori Masala">
                 <h2 class="product-name">Special Tandoori Masala</h2>
                 <p class="product-description">A smoky and flavorful mix perfect for grilling meats and vegetables.</p>
-                <p class="product-price">1299</p>
-                <button class="buy-now-btn" data-price="1299">
+                <p class="product-price">₹1299</p>
+                <a href="#" class="buy-now-btn" data-price="1299" data-upi="adnanmuhammad4393@okicici">
                     <i class="fas fa-cart-plus"></i> Buy Now
-                </button>
+                </a>
             </div>
         </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-info">
+        <p>For any queries, you can reach us on WhatsApp:</p>
+        <a href="https://wa.me/919645778508?text=Hello%20Kamarooz%2C%20I%20would%20like%20to%20inquire%20about%20your%20products%20and%20services." target="_blank">
+            +91 9645778508
+        </a>
     </section>
 
     <!-- Footer Section -->
@@ -281,10 +304,10 @@
     </footer>
 
     <script>
-        // Function to trigger the donation widget
-        function createDonationWidget(email, price, buttonLabel) {
-            console.log("Donation Widget Triggered for", email, price, buttonLabel);
-            // Add actual integration with donation widget here
+        // Function to open UPI payment link
+        function openUPIPaymentLink(upiId, amount) {
+            const upiUrl = `upi://pay?pa=${upiId}&pn=Kamarooz&mc=1234&tid=1234567890&tt=1&am=${amount}&cu=INR&url=https://kamarooz.com`;
+            window.location.href = upiUrl;
         }
 
         // Add event listeners to "Buy Now" buttons after page loads
@@ -292,10 +315,11 @@
             const buyNowButtons = document.querySelectorAll('.buy-now-btn');
 
             buyNowButtons.forEach(function (button) {
-                button.addEventListener('click', function () {
+                button.addEventListener('click', function (event) {
+                    event.preventDefault();
                     const price = this.getAttribute('data-price');
-                    const buttonLabel = this.innerText;
-                    createDonationWidget('adnanmuhammad4393@okicici', price, buttonLabel);
+                    const upiId = this.getAttribute('data-upi');
+                    openUPIPaymentLink(upiId, price);
                 });
             });
         });
