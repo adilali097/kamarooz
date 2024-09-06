@@ -1,72 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Kamarooz</title>
-    <link rel="stylesheet" href="print.css" media="print">
-    <link rel="shortcut icon" href="https://i.ibb.co/M11mCDq/Modern-Initial-E-Logo.png" type="image/x-icon">
+    <title>Kamarooz - Premium Masala Products</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f9f9f9;
-            color: #333333;
+        /* Global Styles */
+        * {
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
+            box-sizing: border-box;
         }
 
-        h1 {
-            font-size: 3em;
-            color: #6b5b95;
-            margin-bottom: 0.2em;
-        }
-
-        h2 {
-            font-size: 1.5em;
-            color: #ff6f61;
-            margin-top: 0;
-        }
-
-        p {
-            font-size: 1em;
-            color: #333333;
-            max-width: 600px;
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
             line-height: 1.6;
-            margin: 20px 0;
         }
 
         a {
-            font-size: 1em;
-            color: #88b04b;
             text-decoration: none;
-            border-bottom: 2px solid #88b04b;
-            padding-bottom: 2px;
-            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+            color: inherit;
         }
 
-        a:hover {
-            color: #6b5b95;
-            border-bottom-color: #6b5b95;
+        header {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: #fff;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 14px;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #e67e22;
+            transition: width 0.3s;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 18px;
+            color: #555;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Product Showcase */
+        .product-showcase {
+            padding: 50px 20px;
+            background-color: #fff;
+        }
+
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #444;
+        }
+
+        .product-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product {
+            background-color: #fff;
+            border-radius: 8px;
+            width: 300px;
+            margin: 20px;
+            padding: 20px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .product img:hover {
+            transform: scale(1.1);
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin: 10px 0;
+            color: #333;
+            text-align: center;
+        }
+
+        .product-description {
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #e67e22;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .buy-now-btn {
+            display: block;
+            width: 100%;
+            background-color: #e67e22;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .buy-now-btn:hover {
+            background-color: #d35400;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            border-top: 3px solid #e67e22;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .product-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product {
+                width: 90%;
+                margin-bottom: 40px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <h1>Welcome To Kamarooz</h1>
-    <h2>The Masla Powder Company</h2>
-    <p>
-        Kamarooz is a global reselling company offering premium quality masala powders. We source the finest spices from around the world to bring you authentic flavors that enhance your culinary experience. Our operations span across various countries, ensuring that our products are accessible to customers worldwide. As a reselling company, we pride ourselves on providing top-notch products without the need for specific local licenses, allowing us to maintain flexibility and reach in the global market.
-    </p>
-   <p>This site is under construction</p>
 
-    <a href="https://adwebcomicagency.vercel.app/">This website is developed and managed by Ad Web Comic Agency</a>
+    <!-- Header Section -->
+    <header>
+        <h1>Kamarooz</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Content Section -->
+    <div class="content">
+        <h2>About Us</h2>
+        <p>At Kamarooz, we specialize in bringing the finest masala powders, crafted with passion and tradition, right to your kitchen. Our products promise the best flavors of Indian cuisine.</p>
+    </div>
+
+    <!-- Product Showcase Section -->
+    <section id="products" class="product-showcase">
+        <h1 class="product-title">Our Masala Powder Products</h1>
+
+        <div class="product-container">
+            <!-- Product 1 -->
+            <div class="product">
+                <img src="masala1.jpg" alt="Spicy Garam Masala">
+                <h2 class="product-name">Spicy Garam Masala</h2>
+                <p class="product-description">A perfect blend of rich Indian spices for curries, biryanis, and more.</p>
+                <p class="product-price">1099</p>
+                <button class="buy-now-btn" data-price="1099">
+                    <i class="fas fa-cart-plus"></i> Buy Now
+                </button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product">
+                <img src="masala2.jpg" alt="Authentic Chana Masala">
+                <h2 class="product-name">Authentic Chana Masala</h2>
+                <p class="product-description">The traditional mix for making delicious Chana Masala with a deep flavor.</p>
+                <p class="product-price">899</p>
+                <button class="buy-now-btn" data-price="899">
+                    <i class="fas fa-cart-plus"></i> Buy Now
+                </button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product">
+                <img src="masala3.jpg" alt="Special Tandoori Masala">
+                <h2 class="product-name">Special Tandoori Masala</h2>
+                <p class="product-description">A smoky and flavorful mix perfect for grilling meats and vegetables.</p>
+                <p class="product-price">1299</p>
+                <button class="buy-now-btn" data-price="1299">
+                    <i class="fas fa-cart-plus"></i> Buy Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Kamarooz. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to trigger the donation widget
+        function createDonationWidget(email, price, buttonLabel) {
+            console.log("Donation Widget Triggered for", email, price, buttonLabel);
+            // Add actual integration with donation widget here
+        }
+
+        // Add event listeners to "Buy Now" buttons after page loads
+        window.addEventListener('load', function () {
+            const buyNowButtons = document.querySelectorAll('.buy-now-btn');
+
+            buyNowButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    const price = this.getAttribute('data-price');
+                    const buttonLabel = this.innerText;
+                    createDonationWidget('adnanmuhammad4393@okicici', price, buttonLabel);
+                });
+            });
+        });
+    </script>
 </body>
-
 </html>
